@@ -1,6 +1,6 @@
 # Section 4: Workflow and Database Setup
 
-_Planning outline only — no finished lesson pages exist yet in the source notebook. Preserved verbatim below._
+_Early planning outline for this section, preserved verbatim below. The section was later written up as Lessons 4.1–4.7 (plus 4.5.5) under the title "Process Templates, Instances and Workflow Assembly" — the finished lessons don't follow this outline's structure exactly (e.g. it separates "TP/RDB/HDB Process Template" as item 5, while the finished lessons cover templates first in 4.1), but this is kept here as the original rationale/context behind the section._
 
 > @Carl
 >
