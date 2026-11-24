@@ -1,0 +1,9 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Segoe UI, Helvetica, Arial, sans-serif", "fontSize": "15px", "primaryColor": "#f0efea", "primaryBorderColor": "#dcdbd5", "primaryTextColor": "#1f1f1f", "lineColor": "#8f8f8f"}, "flowchart": {"curve": "basis", "nodeSpacing": 28, "rankSpacing": 34}}}%%
+flowchart LR
+    tp["TP EOD signal<br/>eodFunct[dt]"] --> s1["1. Disable<br/>gateway queries<br/>(RDB + HDB)"]
+    s1 --> s2["2. For each table<br/>in tablesEod:<br/>save with .Q.dpft,<br/>then clear"]
+    s2 --> s3["3. Garbage<br/>collection"]
+    s3 --> s4["4. Re-enable<br/>gateway queries"]
+    s4 --> s5["5. Reload<br/>the HDB"]
+    classDef focus fill:#1f6fe5,stroke:#1a5fc4,color:#ffffff
+    class s2 focus
