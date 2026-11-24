@@ -16,3 +16,4 @@ _Planning outline for this section (supplied alongside the course outline — no
 > - 7.2 The Default EOD Function
 > - 7.3 Configuring EOD on the TP, RDB and HDB
 > - 7.4 Worked Example: Running EOD and Validating the HDB
+> - 7.5 Startup and Recovery
