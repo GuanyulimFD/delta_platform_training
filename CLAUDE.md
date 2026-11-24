@@ -4,6 +4,8 @@
 
 A migration of the company's SharePoint OneNote L&D notebook ("KX Training - Delta Platform") into git-friendly markdown. The notebook is an 8-section onboarding course for the Delta Platform (KDB/kdb+ based). Source: SharePoint site `EPAMKXServices`, notebook `Modules.one`.
 
+**Section 1 is the exception**: the source notebook's Section 1 was an empty stub (title + date only). It was authored fresh, collaboratively with the user, rather than migrated — see "Section 1 is different" below before touching it.
+
 ## Why this exists (4 goals)
 
 1. **Diffable content** — real git diffs instead of an opaque OneNote binary.
@@ -30,6 +32,15 @@ Section numbering follows the source notebook (01 through 08). Lesson IDs match 
 - **Typos in the source**: a few lessons have a body heading that doesn't match the page/nav title (e.g. says "Module 3" when it's actually Module 4). These are noted with a `> **Note:**` line rather than silently "corrected" — the nav/page title wins as the source of truth.
 - **Links**: the OneNote editor renders as a canvas, so most hyperlink hrefs aren't extractable from the page — only links whose destination is also the literal visible text (e.g. a pasted URL) were captured. Everything else is noted as "(link not captured from source — canvas-rendered page, no extractable URL)". Never fabricate or guess a URL to fill these in.
 - **Images**: extracted via OneNote's right-click → **Save As** (lossless, full original resolution), not screenshots — screenshots truncate anything wider/taller than the viewport. See memory `onenote-image-extraction` for the full technique if re-running extraction from the live notebook.
+
+## Section 1 is different
+
+Unlike Sections 2–8, Section 1 ("Introduction to Delta Platform") has no OneNote source — it was written from scratch in collaboration with the user, grounded in (a) the content of Sections 2–8 themselves and (b) the official docs at https://code.kx.com/platform/latest/. None of the Sections 2–8 conventions above apply to it:
+
+- No "Reviewer notes" blockquotes (no source reviewer comments exist).
+- No "Note:" fidelity flags for typos/gaps (nothing to be faithful to — if something reads wrong, just fix it).
+- Its one diagram (`1.2-...images/1.2-delta-platform-architecture.svg`) was hand-authored as SVG, not extracted. Audience for the whole section: new joiners roughly 1–2 months into kdb+/q training up to ~1.5 years' experience, who likely haven't seen a hand-rolled production kdb+ system before — so the "how is this different from native kdb+" framing in 1.1 briefly sketches what a from-scratch setup looks like rather than assuming the reader has already seen one.
+- When adding new content to Section 1 or touching the diagram, preview SVGs before finalizing by serving the scratchpad dir with `python3 -m http.server` and opening a tiny wrapper HTML (`<img src="...svg">`) in a Claude-in-Chrome tab — the extension can't screenshot a raw `file://` or bare `image/svg+xml` response directly.
 
 ## Known environment quirk
 
